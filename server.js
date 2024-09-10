@@ -15,6 +15,16 @@ let keepAlive;
 const setupDeepgram = (ws) => {
   const deepgram = deepgramClient.listen.live({
     smart_format: true,
+    diarize: true,
+    paragraph: true,
+    punctuate: true,
+    utterance: true,
+    vad_events: true,
+    diarization_speaker_labels: true,
+    speaker_labels_max_speakers: 6,
+//    interim_results: true,
+    endpointing_ms: 1234,
+    utterance_end_ms: 1234,
     model: "nova-2",
   });
 

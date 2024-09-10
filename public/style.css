@@ -5,13 +5,14 @@
 body {
   color: white;
   display: flex;
+  margin-top: 20px;
   align-items: center;
   font-family: "Inter", sans-serif;
   justify-content: center;
   flex-direction: column;
-  height: 90vh;
+  height: auto;
   background-color: #000;
-  padding-top: 100px;
+  padding-top: 10px;
 }
 
 .content {
@@ -30,24 +31,29 @@ body {
 }
 
 .button-container {
-  perspective: 500px;
-  -moz-perspective: 500px;
-  -webkit-perspective: 500px;
+  perspective: 000px;
+  -moz-perspective: 100px;
+  -webkit-perspective: 100px;
+  display: flex;
+  gap: 16px;
+  justify-content: center; /* Add this to ensure buttons stay centered */
+  width: 100%; /* Add this to make the container full width */
 }
 
 .mic-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 200px;
-  width: 200px;
+  height: 20px; /* Changed from 40px */
+  width: 20px; /* Changed from 40px */
   border-radius: 100%;
   transition: transform 0.4s;
-  border: 2px solid #47aca9;
+  border: 1px solid #47aca9; /* Changed from 2px */
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   position: relative;
+  cursor: pointer;
 }
 
 .button-message,
@@ -59,43 +65,43 @@ body {
 
 .button-message {
   position: absolute;
-  width: 50px;
+  width: auto;
   color: #fff;
   font-family: "Arimo", sans-serif;
   font-weight: 700;
-  font-size: 25px;
+  font-size: 15px;
   text-align: center;
   line-height: 20px;
   z-index: 2;
   transform: rotateY(0deg);
   pointer-events: none;
-  left: 58px;
-  top: 71px;
+  left: 60px;
+  white-space: nowrap;
 }
 
 .mic-button-loader {
   position: absolute;
-  height: 202px;
-  width: 200px;
+  height: 26px; /* Changed from 52px */
+  width: 250px; /* Changed from 500px */
   background-color: transparent;
   transform: rotateY(180deg);
-  top: -61px;
-  left: -101px;
+  top: -30.5px; /* Changed from -61px */
+  left: -50.5px; /* Changed from -101px */
 }
 
 .mic-checkbox:checked + .mic-button > .mic > .mic-button-loader {
-  border-top: 2.5px solid #13ef95;
+  border-top: 1.25px solid #13ef95; /* Changed from 2.5px */
   border-radius: 100%;
   animation: borderLoader 1.3s 0.2s ease-in-out infinite;
 }
 
 .mic {
   position: relative;
-  top: -17px;
-  border: 20px solid #47aca9;
-  height: 48px;
+  top: -8.5px; /* Changed from -17px */
+  border: 10px solid #47aca9; /* Changed from 20px */
+  height: 24px; /* Changed from 48px */
   width: 0;
-  border-radius: 45px;
+  border-radius: 22.5px; /* Changed from 45px */
   transform: rotateY(180deg);
 }
 
@@ -107,32 +113,32 @@ body {
 
 .mic:after {
   content: "";
-  top: 16px;
-  left: -30px;
-  height: 57px;
-  width: 50px;
+  top: 8px; /* Changed from 16px */
+  left: -15px; /* Changed from -30px */
+  height: 28.5px; /* Changed from 57px */
+  width: 25px; /* Changed from 50px */
   background-color: transparent;
-  border: 5px solid #47aca9;
-  border-bottom-left-radius: 102px;
-  border-bottom-right-radius: 110px;
+  border: 2.5px solid #47aca9; /* Changed from 5px */
+  border-bottom-left-radius: 51px; /* Changed from 102px */
+  border-bottom-right-radius: 55px; /* Changed from 110px */
   border-top: 0;
 }
 
 .mic:before {
   content: "";
-  top: 77px;
-  left: -2px;
-  border-bottom: 18px solid #47aca9;
-  border-left: 3px solid #47aca9;
-  border-right: 3px solid #47aca9;
+  top: 38.5px; /* Changed from 77px */
+  left: -1px; /* Changed from -2px */
+  border-bottom: 9px solid #47aca9; /* Changed from 18px */
+  border-left: 1.5px solid #47aca9; /* Changed from 3px */
+  border-right: 1.5px solid #47aca9; /* Changed from 3px */
 }
 
 .mic-base {
-  top: 95px;
-  left: -14px;
-  border-bottom: 7px solid #47aca9;
-  border-left: 15px solid #47aca9;
-  border-right: 15px solid #47aca9;
+  top: 47.5px; /* Changed from 95px */
+  left: -7px; /* Changed from -14px */
+  border-bottom: 3.5px solid #47aca9; /* Changed from 7px */
+  border-left: 7.5px solid #47aca9; /* Changed from 15px */
+  border-right: 7.5px solid #47aca9; /* Changed from 15px */
 }
 
 @keyframes borderLoader {
@@ -149,7 +155,37 @@ body {
   font-size: 24px;
   font-family: "Inter", sans-serif;
   margin: 10px 0;
-  text-align: center;
+  text-align: left; /* Change this from center to left */
+  max-width: 80%; /* Add this to limit the width of the captions */
+  width: 100%; /* Add this to make sure it takes full width up to max-width */
+}
+
+#captions p {
+  margin: 5px 0;
+  line-height: 1.4;
+  position: relative;
+  padding-left: 20px; /* Make room for the remove button */
+}
+
+#captions p strong {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.remove-caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px;
+  color: #999;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.remove-caption:hover {
+  opacity: 1;
 }
 
 h1 {
@@ -161,18 +197,15 @@ h1 {
   text-align: center;
 }
 
-.button-container {
-  display: flex;
-  gap: 16px;
-}
-
 .info-button {
   display: flex;
   align-items: center;
+  justify-content: center;
   color: black;
   height: 40px;
-  border-radius: 4px;
-  padding: 0 16px;
+  width: 40px;
+  border-radius: 100%;
+  padding: 0;
   margin-top: 32px;
   font-family: "Arimo", sans-serif;
   font-weight: 600;
@@ -190,7 +223,7 @@ h1 {
 
 .sign-up::before {
   content: "";
-  border-radius: 4px;
+  border-radius: 100%;
   position: absolute;
   top: 1px;
   right: 1px;
@@ -217,4 +250,44 @@ h1 {
   height: 150px;
   left: 20px;
   top: -144px;
+}
+
+.mic-button.recording .button-message {
+  color: #13ef95;
+}
+
+#mic-container {
+    font-size: 48px;
+    color: #47aca9;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#mic-icon {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#mic-icon.recording {
+    color: #ff4136;
+}
+
+/* Add this CSS to position the button at the bottom */
+#clear-captions {
+    position: fixed;
+    bottom: 20px; /* Adjust as needed */
+    left: 20px; /* Adjust as needed */
+    background-color: #47aca9; /* Match microphone color */
+    color: white; /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 20px; /* Make it rounded */
+    padding: 10px 20px; /* Add some padding */
+    cursor: pointer; /* Change cursor on hover */
+    font-family: "Arimo", sans-serif; /* Match font */
+    font-weight: 500; /* Match font weight */
+    transition: background-color 0.3s; /* Smooth background color change */
+}
+
+#clear-captions:hover {
+    background-color: #3a9b8a; /* Darker shade on hover */
 }
